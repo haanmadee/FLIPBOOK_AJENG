@@ -1,10 +1,10 @@
 <div id="flip-container" class="flip-wrapper">
   
-  <a href="https://lynk.id/ajengwahys/7nw892ndj2gk" class="flip-card front">
+  <a href="https://lynk.id/ajengwahys/7nw892ndj2gk" target="_blank" rel="noopener noreferrer" class="flip-card front">
     <img src="https://cdn.lynkid.my.id/draft-products/16-12-2025/1765891157926_5106742.png" alt="Remote Worker Promo">
   </a>
 
-  <a href="https://lynk.id/ajengwahys/7nw892ndj2gk" class="flip-card back">
+  <a href="https://lynk.id/ajengwahys/7nw892ndj2gk" target="_blank" rel="noopener noreferrer" class="flip-card back">
     <img src="https://cdn.lynkid.my.id/draft-products/16-12-2025/1765891195804_7791130.png" alt="Sharing Session Promo">
   </a>
 
@@ -31,19 +31,20 @@
     backface-visibility: hidden; /* Menyembunyikan sisi belakang gambar saat memutar */
     transform-style: preserve-3d;
     display: block;
+    cursor: pointer; /* Menambahkan icon jari saat di-hover */
   }
 
   .flip-card img {
     width: 100%;
     height: auto;
-    border-radius: 8px; /* Opsional: Biar ujungnya tidak tajam */
+    border-radius: 8px;
     display: block;
   }
 
-  /* Posisi Awal */
+  /* --- Posisi Awal --- */
   .flip-card.front {
     transform: rotateY(0deg);
-    z-index: 2;
+    z-index: 2; /* Depan lebih tinggi prioritas kliknya */
   }
 
   .flip-card.back {
@@ -51,13 +52,15 @@
     z-index: 1;
   }
 
-  /* Posisi Saat Class 'flipped' Aktif (Gambar 2 Muncul) */
+  /* --- Posisi Saat Class 'flipped' Aktif (Gambar 2 Muncul) --- */
   .flip-wrapper.flipped .flip-card.front {
     transform: rotateY(-180deg);
+    z-index: 1; /* Turunkan prioritas agar tidak menghalangi klik */
   }
 
   .flip-wrapper.flipped .flip-card.back {
     transform: rotateY(0deg);
+    z-index: 2; /* Naikkan prioritas agar BISA DIKLIK */
   }
 </style>
 
