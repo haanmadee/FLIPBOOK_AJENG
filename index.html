@@ -1,0 +1,76 @@
+<div id="flip-container" class="flip-wrapper">
+  
+  <a href="https://lynk.id/ajengwahys/7nw892ndj2gk" class="flip-card front">
+    <img src="https://cdn.lynkid.my.id/draft-products/16-12-2025/1765891157926_5106742.png" alt="Remote Worker Promo">
+  </a>
+
+  <a href="https://lynk.id/ajengwahys/7nw892ndj2gk" class="flip-card back">
+    <img src="https://cdn.lynkid.my.id/draft-products/16-12-2025/1765891195804_7791130.png" alt="Sharing Session Promo">
+  </a>
+
+</div>
+
+<style>
+  .flip-wrapper {
+    position: relative;
+    width: 100%;
+    /* Grid membuat tumpukan gambar tetap punya tinggi yang proporsional */
+    display: grid;
+    grid-template-areas: "stack";
+    perspective: 1000px; /* Memberi kesan kedalaman 3D */
+    margin: 0;
+    padding: 0;
+    line-height: 0;
+  }
+
+  .flip-card {
+    grid-area: stack; /* Menumpuk kedua gambar di tempat yang sama */
+    width: 100%;
+    height: auto;
+    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1); /* Kecepatan animasi flip */
+    backface-visibility: hidden; /* Menyembunyikan sisi belakang gambar saat memutar */
+    transform-style: preserve-3d;
+    display: block;
+  }
+
+  .flip-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px; /* Opsional: Biar ujungnya tidak tajam */
+    display: block;
+  }
+
+  /* Posisi Awal */
+  .flip-card.front {
+    transform: rotateY(0deg);
+    z-index: 2;
+  }
+
+  .flip-card.back {
+    transform: rotateY(180deg);
+    z-index: 1;
+  }
+
+  /* Posisi Saat Class 'flipped' Aktif (Gambar 2 Muncul) */
+  .flip-wrapper.flipped .flip-card.front {
+    transform: rotateY(-180deg);
+  }
+
+  .flip-wrapper.flipped .flip-card.back {
+    transform: rotateY(0deg);
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const container = document.getElementById('flip-container');
+    
+    // Fungsi untuk membolak-balik class 'flipped'
+    function toggleFlip() {
+      container.classList.toggle('flipped');
+    }
+
+    // Jalankan setiap 5 detik (5000ms)
+    setInterval(toggleFlip, 5000);
+  });
+</script>
