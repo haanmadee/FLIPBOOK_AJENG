@@ -1,79 +1,385 @@
-<div id="flip-container" class="flip-wrapper">
-  
-  <a href="https://lynk.id/ajengwahys/7nw892ndj2gk" target="_blank" rel="noopener noreferrer" class="flip-card front">
-    <img src="https://cdn.lynkid.my.id/draft-products/16-12-2025/1765891157926_5106742.png" alt="Remote Worker Promo">
-  </a>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajengwahys Academy Banner</title>
+    <style>
+        /* Menggunakan font Inter sesuai permintaan */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-  <a href="https://lynk.id/ajengwahys/7nw892ndj2gk" target="_blank" rel="noopener noreferrer" class="flip-card back">
-    <img src="https://cdn.lynkid.my.id/draft-products/16-12-2025/1765891195804_7791130.png" alt="Sharing Session Promo">
-  </a>
+        :root {
+            --navy-deep: #0B132B;
+            --navy-light: #1C2541;
+            --accent-yellow: #F4D03F;
+            --text-white: #FFFFFF;
+            --transition-smooth: 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
 
-</div>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Inter', sans-serif;
+            background-color: #f8f9fa;
+        }
 
-<style>
-  .flip-wrapper {
-    position: relative;
-    width: 100%;
-    /* Grid membuat tumpukan gambar tetap punya tinggi yang proporsional */
-    display: grid;
-    grid-template-areas: "stack";
-    perspective: 1000px; /* Memberi kesan kedalaman 3D */
-    margin: 0;
-    padding: 0;
-    line-height: 0;
-  }
+        /* Container utama banner */
+        .banner-container {
+            position: relative;
+            width: 100%;
+            height: 450px;
+            overflow: hidden;
+            background-color: var(--navy-deep);
+            display: flex;
+            align-items: center;
+        }
 
-  .flip-card {
-    grid-area: stack; /* Menumpuk kedua gambar di tempat yang sama */
-    width: 100%;
-    height: auto;
-    transition: transform 0.8s cubic-bezier(0.4, 0.2, 0.2, 1); /* Kecepatan animasi flip */
-    backface-visibility: hidden; /* Menyembunyikan sisi belakang gambar saat memutar */
-    transform-style: preserve-3d;
-    display: block;
-    cursor: pointer; /* Menambahkan icon jari saat di-hover */
-  }
+        /* Wrapper untuk slider */
+        .slider-wrapper {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform var(--transition-smooth);
+        }
 
-  .flip-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 8px;
-    display: block;
-  }
+        /* Individual slide */
+        .slide {
+            min-width: 100%;
+            height: 100%;
+            position: relative;
+        }
 
-  /* --- Posisi Awal --- */
-  .flip-card.front {
-    transform: rotateY(0deg);
-    z-index: 2; /* Depan lebih tinggi prioritas kliknya */
-  }
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            display: block;
+        }
 
-  .flip-card.back {
-    transform: rotateY(180deg);
-    z-index: 1;
-  }
+        /* Overlay Gradien Deep Navy Blue */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(11, 19, 43, 0.95) 0%, rgba(28, 37, 65, 0.7) 60%, rgba(11, 19, 43, 0.3) 100%);
+            z-index: 1;
+        }
 
-  /* --- Posisi Saat Class 'flipped' Aktif (Gambar 2 Muncul) --- */
-  .flip-wrapper.flipped .flip-card.front {
-    transform: rotateY(-180deg);
-    z-index: 1; /* Turunkan prioritas agar tidak menghalangi klik */
-  }
+        /* Konten teks dan tombol */
+        .banner-content {
+            position: absolute;
+            top: 50%;
+            left: 5%;
+            transform: translateY(-50%);
+            z-index: 2;
+            color: var(--text-white);
+            max-width: 650px;
+            padding: 0 20px;
+        }
 
-  .flip-wrapper.flipped .flip-card.back {
-    transform: rotateY(0deg);
-    z-index: 2; /* Naikkan prioritas agar BISA DIKLIK */
-  }
-</style>
+        .badge {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+            backdrop-filter: blur(4px);
+        }
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const container = document.getElementById('flip-container');
-    
-    // Fungsi untuk membolak-balik class 'flipped'
-    function toggleFlip() {
-      container.classList.toggle('flipped');
-    }
+        .banner-content h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin: 0 0 10px 0;
+            line-height: 1.1;
+            letter-spacing: -1px;
+        }
 
-    // Jalankan setiap 5 detik (5000ms)
-    setInterval(toggleFlip, 5000);
-  });
-</script>
+        .banner-content p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin: 0 0 20px 0;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.6;
+        }
+
+        .banner-content p strong {
+            color: var(--text-white);
+            font-weight: 600;
+        }
+
+        .price-section {
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .price-normal {
+            text-decoration: line-through;
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+        }
+
+        .price-promo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent-yellow);
+        }
+
+        .stats-row {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 25px;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .stats-row span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* Styling Button */
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            background-color: var(--text-white);
+            color: var(--navy-deep);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-yellow);
+            color: var(--navy-deep);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(244, 208, 63, 0.3);
+        }
+
+        /* Indikator Slider */
+        .slider-dots {
+            position: absolute;
+            bottom: 25px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            gap: 10px;
+        }
+
+        .dot {
+            width: 10px;
+            height: 10px;
+            background-color: rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background-color: var(--text-white);
+            transform: scale(1.4);
+        }
+
+        /* Responsive Mobile */
+        @media (max-width: 768px) {
+            .banner-container {
+                height: 340px;
+            }
+
+            .overlay {
+                background: linear-gradient(180deg, rgba(11, 19, 43, 0.7) 0%, rgba(11, 19, 43, 0.95) 100%);
+            }
+
+            .banner-content {
+                left: 0;
+                width: 100%;
+                text-align: center;
+                padding: 0 20px;
+                box-sizing: border-box;
+            }
+
+            .badge {
+                font-size: 0.7rem;
+                margin-bottom: 8px;
+            }
+
+            .banner-content h1 {
+                font-size: 1.7rem;
+                margin-bottom: 8px;
+            }
+
+            .banner-content p {
+                font-size: 0.9rem;
+                margin-bottom: 15px;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+                overflow: hidden;
+            }
+
+            .price-section {
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+
+            .price-promo {
+                font-size: 1.5rem;
+            }
+
+            .stats-row {
+                justify-content: center;
+                margin-bottom: 20px;
+                font-size: 0.85rem;
+            }
+
+            .cta-button {
+                padding: 12px 28px;
+                font-size: 0.95rem;
+                width: 80%;
+            }
+
+            .slider-dots {
+                bottom: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="banner-container">
+        <div class="slider-wrapper" id="sliderWrapper">
+            <div class="slide">
+                <img src="https://image2url.com/r2/default/images/1775548782917-69045535-b4d9-4045-9a34-f5f4a4be7890.png" alt="Team Collaboration">
+            </div>
+            <div class="slide">
+                <img src="https://image2url.com/r2/default/images/1775549101591-fca06ca1-375e-4a80-9ca7-498bc3a52cbb.png" alt="Working Remotely">
+            </div>
+        </div>
+
+        <div class="overlay"></div>
+
+        <div class="banner-content" id="bannerContent">
+            </div>
+
+        <div class="slider-dots">
+            <div class="dot active" data-index="0"></div>
+            <div class="dot" data-index="1"></div>
+        </div>
+    </div>
+
+    <script>
+        // Data konten bersih tanpa emotikon
+        const slideData = [
+            {
+                badge: "AJENGWAHYS ACADEMY",
+                title: "Don't Just Read.<br>Start Doing.",
+                desc: "Jalan pintas dari pengalamanku 6 tahun. Bukan sekadar Ebook, tapi <strong>Ekosistem Belajar</strong> biar kamu nggak bingung sendirian.",
+                extraHtml: `
+                    <div class="stats-row">
+                        <span>4.9/5 Rating</span>
+                        <span>•</span>
+                        <span>1000+ Terjual</span>
+                    </div>
+                `,
+                btnText: "Mulai Sekarang",
+                btnLink: "https://lynk.id/ajengwahys/7nw892ndj2gk" 
+            },
+            {
+                badge: "LIFETIME ACCESS",
+                title: "Becoming Remote Worker",
+                desc: "Ebook update otomatis di Notion, akses <strong>Circle Community</strong> 24/7, dan Webinar Rutin (Mentoring & Bedah CV).",
+                extraHtml: `
+                    <div class="price-section">
+                        <span class="price-normal">Rp 399.000</span>
+                        <span class="price-promo">Rp 129.900</span>
+                    </div>
+                `,
+                btnText: "Ambil Promo Terbatas",
+                btnLink: "https://lynk.id/ajengwahys/7nw892ndj2gk" 
+            }
+        ];
+
+        const sliderWrapper = document.getElementById('sliderWrapper');
+        const bannerContent = document.getElementById('bannerContent');
+        const dots = document.querySelectorAll('.dot');
+        
+        let currentIndex = 0;
+        const totalSlides = slideData.length;
+        let sliderInterval;
+
+        function renderContent(index) {
+            const data = slideData[index];
+            
+            bannerContent.style.opacity = '0';
+            bannerContent.style.transform = 'translateY(-45%)';
+            bannerContent.style.transition = 'all 0.4s ease';
+            
+            setTimeout(() => {
+                bannerContent.innerHTML = `
+                    <span class="badge">${data.badge}</span>
+                    <h1>${data.title}</h1>
+                    <p>${data.desc}</p>
+                    ${data.extraHtml}
+                    <a href="${data.btnLink}" target="_blank" rel="noopener noreferrer" class="cta-button">${data.btnText}</a>
+                `;
+                bannerContent.style.opacity = '1';
+                bannerContent.style.transform = 'translateY(-50%)';
+            }, 400); 
+        }
+
+        function goToSlide(index) {
+            currentIndex = index;
+            sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
+            
+            renderContent(currentIndex);
+
+            dots.forEach(dot => dot.classList.remove('active'));
+            dots[currentIndex].classList.add('active');
+        }
+
+        function nextSlide() {
+            let nextIndex = (currentIndex + 1) % totalSlides;
+            goToSlide(nextIndex);
+        }
+
+        function startSlider() {
+            sliderInterval = setInterval(nextSlide, 5000); 
+        }
+
+        function stopSlider() {
+            clearInterval(sliderInterval);
+        }
+
+        dots.forEach(dot => {
+            dot.addEventListener('click', (e) => {
+                const index = parseInt(e.target.getAttribute('data-index'));
+                if (index !== currentIndex) {
+                    goToSlide(index);
+                    stopSlider();
+                    startSlider();
+                }
+            });
+        });
+
+        renderContent(0);
+        startSlider();
+    </script>
+
+</body>
+</html>
