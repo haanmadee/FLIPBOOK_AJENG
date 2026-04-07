@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajengwahys Academy Banner</title>
     <style>
-        /* Menggunakan font Inter sesuai permintaan */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
         :root {
@@ -23,7 +22,6 @@
             background-color: #f8f9fa;
         }
 
-        /* Container utama banner */
         .banner-container {
             position: relative;
             width: 100%;
@@ -34,7 +32,6 @@
             align-items: center;
         }
 
-        /* Wrapper untuk slider */
         .slider-wrapper {
             display: flex;
             width: 100%;
@@ -42,7 +39,6 @@
             transition: transform var(--transition-smooth);
         }
 
-        /* Individual slide */
         .slide {
             min-width: 100%;
             height: 100%;
@@ -57,7 +53,6 @@
             display: block;
         }
 
-        /* Overlay Gradien Deep Navy Blue */
         .overlay {
             position: absolute;
             top: 0;
@@ -68,7 +63,6 @@
             z-index: 1;
         }
 
-        /* Konten teks dan tombol */
         .banner-content {
             position: absolute;
             top: 50%;
@@ -148,7 +142,6 @@
             gap: 5px;
         }
 
-        /* Styling Button */
         .cta-button {
             display: inline-flex;
             align-items: center;
@@ -171,7 +164,6 @@
             box-shadow: 0 8px 25px rgba(244, 208, 63, 0.3);
         }
 
-        /* Indikator Slider */
         .slider-dots {
             position: absolute;
             bottom: 25px;
@@ -196,10 +188,10 @@
             transform: scale(1.4);
         }
 
-        /* Responsive Mobile */
+        /* --- PERBAIKAN RESPONSIVE MOBILE --- */
         @media (max-width: 768px) {
             .banner-container {
-                height: 340px;
+                height: 260px; /* Diperkecil agar benar-benar jadi persegi panjang horizontal */
             }
 
             .overlay {
@@ -210,52 +202,62 @@
                 left: 0;
                 width: 100%;
                 text-align: center;
-                padding: 0 20px;
+                padding: 0 15px;
                 box-sizing: border-box;
             }
 
             .badge {
-                font-size: 0.7rem;
-                margin-bottom: 8px;
+                font-size: 0.65rem;
+                padding: 3px 10px;
+                margin-bottom: 6px;
             }
 
             .banner-content h1 {
-                font-size: 1.7rem;
-                margin-bottom: 8px;
+                font-size: 1.4rem; /* Teks judul diperkecil */
+                margin-bottom: 6px;
             }
 
             .banner-content p {
-                font-size: 0.9rem;
-                margin-bottom: 15px;
+                font-size: 0.8rem; /* Teks deskripsi diperkecil */
+                margin-bottom: 12px;
                 display: -webkit-box;
-                -webkit-line-clamp: 3;
+                -webkit-line-clamp: 2; /* Dibatasi 2 baris aja biar nggak kepenuhan */
                 -webkit-box-orient: vertical;
                 overflow: hidden;
             }
 
             .price-section {
                 justify-content: center;
-                margin-bottom: 20px;
+                margin-bottom: 12px;
             }
 
             .price-promo {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
+            }
+
+            .price-normal {
+                font-size: 0.85rem;
             }
 
             .stats-row {
                 justify-content: center;
-                margin-bottom: 20px;
-                font-size: 0.85rem;
+                margin-bottom: 12px;
+                font-size: 0.8rem;
             }
 
             .cta-button {
-                padding: 12px 28px;
-                font-size: 0.95rem;
-                width: 80%;
+                padding: 10px 24px;
+                font-size: 0.85rem;
+                width: auto; /* Dibuat otomatis mengikuti panjang teks agar tidak terlalu memakan tempat */
             }
 
             .slider-dots {
-                bottom: 15px;
+                bottom: 10px;
+            }
+
+            .dot {
+                width: 8px; /* Dots sedikit dikecilkan */
+                height: 8px;
             }
         }
     </style>
@@ -284,7 +286,6 @@
     </div>
 
     <script>
-        // Data konten bersih tanpa emotikon
         const slideData = [
             {
                 badge: "AJENGWAHYS ACADEMY",
