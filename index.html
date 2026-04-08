@@ -19,20 +19,21 @@
             margin: 0;
             padding: 0;
             font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa;
+            /* Ganti background putih halaman jadi gelap agar banner mengambang menonjol */
+            background-color: #1a1a1a; 
         }
 
-        /* Container utama banner - Dibuat melengkung dan mengambang */
+        /* Container utama banner - Mengambang, Melengkung, Persegi Panjang */
         .banner-container {
             position: relative;
-            width: 95%; /* Tidak 100% agar lengkungan terlihat */
+            width: 95%; /* Jarak sisi di desktop */
             max-width: 1200px;
-            margin: 24px auto; /* Posisi di tengah dengan jarak atas-bawah */
-            height: 450px;
+            margin: 30px auto; /* Posisi tengah dengan jarak atas-bawah */
+            height: 400px; /* Tinggi Desktop */
             overflow: hidden;
             background-color: var(--navy-deep);
-            border-radius: 24px; /* Efek rounded (tidak ngotak) */
-            box-shadow: 0 10px 30px rgba(11, 19, 43, 0.15); /* Bayangan lembut */
+            border-radius: 24px; /* Efek rounded */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4); /* Bayangan lembut */
             display: flex;
             align-items: center;
         }
@@ -64,48 +65,49 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, rgba(11, 19, 43, 0.95) 0%, rgba(28, 37, 65, 0.7) 60%, rgba(11, 19, 43, 0.3) 100%);
+            /* Gradien fokus di kiri untuk teks */
+            background: linear-gradient(90deg, rgba(11, 19, 43, 0.95) 0%, rgba(11, 19, 43, 0.8) 50%, rgba(11, 19, 43, 0.2) 100%);
             z-index: 1;
         }
 
         .banner-content {
             position: absolute;
             top: 50%;
-            left: 5%;
+            left: 6%; /* Jarak teks dari kiri */
             transform: translateY(-50%);
             z-index: 2;
             color: var(--text-white);
-            max-width: 650px;
-            padding: 0 20px;
-            text-align: left;
+            max-width: 600px;
+            padding: 0;
+            text-align: left; /* Teks rata kiri */
         }
 
         .badge {
             display: inline-block;
             background-color: rgba(255, 255, 255, 0.1);
             border: 1px solid rgba(255, 255, 255, 0.2);
-            padding: 4px 12px;
+            padding: 5px 14px;
             border-radius: 20px;
             font-size: 0.8rem;
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
-            margin-bottom: 12px;
+            margin-bottom: 15px;
             backdrop-filter: blur(4px);
         }
 
         .banner-content h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             font-weight: 800;
-            margin: 0 0 10px 0;
+            margin: 0 0 12px 0;
             line-height: 1.1;
             letter-spacing: -1px;
         }
 
         .banner-content p {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             font-weight: 400;
-            margin: 0 0 20px 0;
+            margin: 0 0 25px 0;
             color: rgba(255, 255, 255, 0.85);
             line-height: 1.6;
         }
@@ -119,7 +121,7 @@
             margin-bottom: 25px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
 
         .price-normal {
@@ -136,7 +138,7 @@
 
         .stats-row {
             display: flex;
-            gap: 15px;
+            gap: 18px;
             margin-bottom: 25px;
             font-size: 0.95rem;
             font-weight: 500;
@@ -145,14 +147,14 @@
         .stats-row span {
             display: flex;
             align-items: center;
-            gap: 5px;
+            gap: 6px;
         }
 
         .cta-button {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 14px 32px;
+            padding: 14px 30px;
             background-color: var(--text-white);
             color: var(--navy-deep);
             text-decoration: none;
@@ -160,19 +162,48 @@
             font-weight: 700;
             border-radius: 8px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
         }
 
         .cta-button:hover {
             background-color: var(--accent-yellow);
             color: var(--navy-deep);
             transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(244, 208, 63, 0.3);
+            box-shadow: 0 10px 30px rgba(244, 208, 63, 0.4);
         }
 
+        /* Navigasi Manual (Panah) */
+        .slider-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 3;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-white);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+            backdrop-filter: blur(4px);
+        }
+
+        .slider-arrow:hover {
+            background-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .arrow-left { left: 20px; }
+        .arrow-right { right: 20px; }
+
+        /* Indikator Slider (Dots) */
         .slider-dots {
             position: absolute;
-            bottom: 25px;
+            bottom: 20px;
             left: 50%;
             transform: translateX(-50%);
             z-index: 2;
@@ -181,8 +212,8 @@
         }
 
         .dot {
-            width: 10px;
-            height: 10px;
+            width: 9px;
+            height: 9px;
             background-color: rgba(255, 255, 255, 0.3);
             border-radius: 50%;
             cursor: pointer;
@@ -191,16 +222,16 @@
 
         .dot.active {
             background-color: var(--text-white);
-            transform: scale(1.4);
+            transform: scale(1.3);
         }
 
-        /* --- RESPONSIVE MOBILE EXTREME --- */
+        /* --- MOBILE RESPONSIVE EXTREME --- */
         @media (max-width: 768px) {
             .banner-container {
                 width: 92%; /* Jarak sisi di mobile */
-                height: 240px; /* Tinggi pipih / landscape */
-                border-radius: 16px; /* Lengkungan sedikit disesuaikan untuk layar kecil */
-                margin: 15px auto;
+                height: 190px; /* TINGGI DIPIPIHKAN LAGI AGAR BENAR-BENAR PERSEGI PANJANG PIPIS */
+                border-radius: 16px;
+                margin: 20px auto;
             }
 
             .overlay {
@@ -210,66 +241,72 @@
 
             .banner-content {
                 left: 5%; /* Teks rapat kiri */
-                width: 85%; /* Mencegah teks terlalu mepet ke kanan */
+                width: 80%; /* Mencegah teks terlalu mepet ke kanan */
+                max-width: none;
                 padding: 0;
             }
 
             .badge {
-                font-size: 0.55rem;
+                font-size: 0.5rem; /* DIPERKECIL LAGI */
                 padding: 3px 8px;
-                margin-bottom: 6px;
+                margin-bottom: 5px;
             }
 
             .banner-content h1 {
-                font-size: 1.2rem; /* Diperkecil drastis */
-                margin-bottom: 6px;
+                font-size: 1.1rem; /* DIPERKECIL DRASTIS */
+                margin-bottom: 4px;
             }
 
             .banner-content p {
-                font-size: 0.75rem; /* Diperkecil */
-                margin-bottom: 10px;
-                line-height: 1.4;
+                font-size: 0.7rem; /* DIPERKECIL LAGI */
+                margin-bottom: 8px;
+                line-height: 1.3;
                 display: -webkit-box;
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
-                max-width: 95%;
             }
 
             .price-section {
                 justify-content: flex-start; /* Rata kiri */
-                margin-bottom: 10px;
-                gap: 8px;
+                margin-bottom: 8px;
+                gap: 6px;
             }
 
             .price-promo {
-                font-size: 1.1rem; /* Diperkecil */
+                font-size: 1rem; /* DIPERKECIL */
             }
 
             .price-normal {
-                font-size: 0.75rem;
+                font-size: 0.7rem;
             }
 
             .stats-row {
                 justify-content: flex-start; /* Rata kiri */
-                margin-bottom: 10px;
-                font-size: 0.7rem; /* Diperkecil */
+                margin-bottom: 8px;
+                font-size: 0.65rem; /* DIPERKECIL */
                 gap: 10px;
             }
 
             .cta-button {
-                padding: 8px 16px; /* Button lebih kecil */
-                font-size: 0.75rem; /* Teks button kecil */
+                padding: 6px 14px; /* DIPERKECIL Button lebih kecil */
+                font-size: 0.7rem; /* Teks button kecil */
                 border-radius: 6px;
             }
 
+            /* Sembunyikan panah manual di mobile agar tidak mengganggu pandangan di layar sempit */
+            .slider-arrow {
+                display: none;
+            }
+
             .slider-dots {
-                bottom: 10px;
+                bottom: 8px;
+                gap: 6px;
             }
 
             .dot {
-                width: 6px;
-                height: 6px;
+                width: 5px;
+                height: 5px;
             }
         }
     </style>
@@ -290,6 +327,9 @@
 
         <div class="banner-content" id="bannerContent">
             </div>
+
+        <button class="slider-arrow arrow-left" id="prevBtn" aria-label="Slide sebelumnya">&#10094;</button>
+        <button class="slider-arrow arrow-right" id="nextBtn" aria-label="Slide berikutnya">&#10095;</button>
 
         <div class="slider-dots">
             <div class="dot active" data-index="0"></div>
@@ -331,11 +371,15 @@
         const sliderWrapper = document.getElementById('sliderWrapper');
         const bannerContent = document.getElementById('bannerContent');
         const dots = document.querySelectorAll('.dot');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
         
         let currentIndex = 0;
         const totalSlides = slideData.length;
         let sliderInterval;
+        const AUTO_SLIDE_DELAY = 5000; // 5 detik
 
+        // Fungsi untuk merender teks di atas banner
         function renderContent(index) {
             const data = slideData[index];
             
@@ -356,40 +400,72 @@
             }, 400); 
         }
 
+        // Fungsi utama untuk berpindah slide
         function goToSlide(index) {
             currentIndex = index;
+            // Geser gambar
             sliderWrapper.style.transform = `translateX(-${currentIndex * 100}%)`;
             
+            // Ganti teks
             renderContent(currentIndex);
 
+            // Update dot aktif
             dots.forEach(dot => dot.classList.remove('active'));
             dots[currentIndex].classList.add('active');
         }
 
-        function nextSlide() {
-            let nextIndex = (currentIndex + 1) % totalSlides;
-            goToSlide(nextIndex);
+        // Fungsi navigasi manual
+        function prevSlide() {
+            let index = (currentIndex - 1 + totalSlides) % totalSlides;
+            handleManualChange(index);
         }
 
+        function nextSlide() {
+            let index = (currentIndex + 1) % totalSlides;
+            handleManualChange(index);
+        }
+
+        // Mengatur jeda otomatis saat ada interaksi manual
+        function handleManualChange(index) {
+            if (index !== currentIndex) {
+                goToSlide(index);
+                stopSlider();
+                startSlider(); // Mulai ulang timer agar jeda setelah klik manual
+            }
+        }
+
+        // Fungsi kontrol otomatis
         function startSlider() {
-            sliderInterval = setInterval(nextSlide, 5000); 
+            sliderInterval = setInterval(() => {
+                let nextIndex = (currentIndex + 1) % totalSlides;
+                goToSlide(nextIndex);
+            }, AUTO_SLIDE_DELAY); 
         }
 
         function stopSlider() {
             clearInterval(sliderInterval);
         }
 
+        // --- EVENT LISTENERS ---
+
+        // Navigasi Manual (Panah)
+        prevBtn.addEventListener('click', prevSlide);
+        nextBtn.addEventListener('click', nextSlide);
+
+        // Navigasi Manual (Dots)
         dots.forEach(dot => {
             dot.addEventListener('click', (e) => {
                 const index = parseInt(e.target.getAttribute('data-index'));
-                if (index !== currentIndex) {
-                    goToSlide(index);
-                    stopSlider();
-                    startSlider();
-                }
+                handleManualChange(index);
             });
         });
 
+        // Hentikan slider saat hover (opsional, nonaktifkan jika mengganggu)
+        // const container = document.querySelector('.banner-container');
+        // container.addEventListener('mouseenter', stopSlider);
+        // container.addEventListener('mouseleave', startSlider);
+
+        // Render konten pertama & mulai slider saat halaman dimuat
         renderContent(0);
         startSlider();
     </script>
