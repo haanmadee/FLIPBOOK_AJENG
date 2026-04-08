@@ -14,11 +14,12 @@
             --transition-smooth: 0.8s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
+        /* Dibuat sebersih mungkin agar mengikuti landing page aslimu */
         body {
             margin: 0;
             padding: 0;
             font-family: 'Inter', sans-serif;
-            background-color: #f8f9fa; /* Warna dasar halaman website kamu */
+            background: transparent; 
         }
 
         /* Container utama banner - FULL TRANSPARAN, TANPA ROUNDED */
@@ -29,14 +30,12 @@
             margin: 0 auto;
             height: 350px;
             overflow: hidden;
-            background-color: transparent; /* TRANSPARAN total */
-            border-radius: 0; /* TANPA LENGKUNGAN */
+            background-color: transparent; 
+            border-radius: 0; 
             display: flex;
             align-items: center;
-            /* Mencegah teks ter-highlight saat di-swipe/drag */
             user-select: none; 
             -webkit-user-select: none;
-            /* Mengoptimalkan gesture di mobile */
             touch-action: pan-y; 
         }
 
@@ -45,7 +44,7 @@
             width: 100%;
             height: 100%;
             transition: transform var(--transition-smooth);
-            cursor: grab; /* Kursor tangan untuk indikasi bisa ditarik */
+            cursor: grab; 
         }
 
         .slider-wrapper:active {
@@ -64,7 +63,7 @@
             object-fit: cover;
             object-position: center;
             display: block;
-            pointer-events: none; /* Mencegah gambar ikut terseret saat swipe */
+            pointer-events: none; 
         }
 
         .overlay {
@@ -73,7 +72,6 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* Gradien gelap HANYA di kiri, kanan transparan agar gambar terlihat jelas */
             background: linear-gradient(90deg, rgba(11, 19, 43, 0.9) 0%, rgba(11, 19, 43, 0.6) 30%, rgba(11, 19, 43, 0) 100%);
             z-index: 1;
             pointer-events: none;
@@ -173,7 +171,6 @@
             border-radius: 6px;
             transition: all 0.3s ease;
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
-            /* Mencegah klik tombol malah memicu swipe */
             position: relative;
             z-index: 10;
         }
@@ -184,7 +181,6 @@
             transform: translateY(-2px);
         }
 
-        /* Indikator Slider (Dots) */
         .slider-dots {
             position: absolute;
             bottom: 10px;
@@ -351,7 +347,6 @@
         let sliderInterval;
         const AUTO_SLIDE_DELAY = 5000;
 
-        // Variabel untuk fitur swipe (Touch & Mouse)
         let startX = 0;
         let endX = 0;
         let isDragging = false;
@@ -402,7 +397,7 @@
             clearInterval(sliderInterval);
         }
 
-        // --- FITUR SWIPE (TOUCH) UNTUK MOBILE ---
+        // --- FITUR SWIPE (TOUCH) ---
         bannerContainer.addEventListener('touchstart', (e) => {
             startX = e.changedTouches[0].screenX;
         }, { passive: true });
@@ -412,7 +407,7 @@
             handleSwipe();
         }, { passive: true });
 
-        // --- FITUR SWIPE (MOUSE/DRAG) UNTUK DESKTOP ---
+        // --- FITUR SWIPE (MOUSE/DRAG) ---
         bannerContainer.addEventListener('mousedown', (e) => {
             isDragging = true;
             startX = e.screenX;
@@ -426,25 +421,21 @@
         });
 
         bannerContainer.addEventListener('mouseleave', () => {
-            isDragging = false; // Batalkan drag jika kursor keluar dari area banner
+            isDragging = false; 
         });
 
-        // Logika eksekusi arah swipe
         function handleSwipe() {
-            const threshold = 50; // Jarak minimal gesekan agar dihitung sebagai swipe (dalam pixel)
+            const threshold = 50; 
             
             if (startX - endX > threshold) {
-                // Geser ke kiri -> Slide selanjutnya
                 let nextIndex = (currentIndex + 1) % totalSlides;
                 handleManualChange(nextIndex);
             } else if (endX - startX > threshold) {
-                // Geser ke kanan -> Slide sebelumnya
                 let prevIndex = (currentIndex - 1 + totalSlides) % totalSlides;
                 handleManualChange(prevIndex);
             }
         }
 
-        // --- NAVIGASI DOTS ---
         dots.forEach(dot => {
             dot.addEventListener('click', (e) => {
                 const index = parseInt(e.target.getAttribute('data-index'));
